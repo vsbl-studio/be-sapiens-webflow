@@ -11,8 +11,9 @@ import {
     Scrollbar,
 } from "swiper/modules";
 // import "swiper/css";
-
+import helloModule from "./modules/helloModule";
 document.addEventListener("DOMContentLoaded", function () {
+    helloModule();
     Swiper.use([Navigation, Pagination, EffectFade, Autoplay, Scrollbar]);
     gsap.registerPlugin(SplitText);
     gsap.registerPlugin(ScrollTrigger);
@@ -97,27 +98,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     const burgerMenuScreen = document.querySelector(".mobile-menu");
     const burgerCheckboxes = document.querySelectorAll(".menu-icon__checkbox");
-    burgerCheckboxes.forEach((checkbox) => {
-        checkbox.addEventListener("change", function () {
-            const isChecked = this.checked;
-            if (isChecked) {
-                burgerMenuScreen.classList.add("open");
-                navbarScroll.forEach((nav) => {
-                    nav.classList.add("visible");
+    if (burgerCheckboxes.length) {
+        burgerCheckboxes.forEach((checkbox) => {
+            checkbox.addEventListener("change", function () {
+                const isChecked = this.checked;
+                if (isChecked) {
+                    burgerMenuScreen.classList.add("open");
+                    navbarScroll.forEach((nav) => {
+                        nav.classList.add("visible");
+                    });
+                    bodyEl.classList.add("no-scroll");
+                } else {
+                    burgerMenuScreen.classList.remove("open");
+                    navbarScroll.forEach((nav) => {
+                        nav.classList.remove("visible");
+                    });
+                    bodyEl.classList.remove("no-scroll");
+                }
+                burgerCheckboxes.forEach((cb) => {
+                    cb.checked = isChecked;
                 });
-                bodyEl.classList.add("no-scroll");
-            } else {
-                burgerMenuScreen.classList.remove("open");
-                navbarScroll.forEach((nav) => {
-                    nav.classList.remove("visible");
-                });
-                bodyEl.classList.remove("no-scroll");
-            }
-            burgerCheckboxes.forEach((cb) => {
-                cb.checked = isChecked;
             });
         });
-    });
+    }
 
     const resetMenu = () => {
         burgerCheckboxes.forEach((cb) => (cb.checked = false));
@@ -127,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Reset the menu on page load and when navigating back
-    window.addEventListener("pageshow", resetMenu);
+    // window.addEventListener("pageshow", resetMenu);
 
     // Get In Touch Modal Toggle
     const closeGetInTouchBtns = document.querySelectorAll(
@@ -180,9 +183,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    window.addEventListener("load", getInTouchVisibility);
+    // window.addEventListener("load", getInTouchVisibility);
 
-    window.addEventListener("hashchange", getInTouchVisibility);
+    // window.addEventListener("hashchange", getInTouchVisibility);
 
     // MIGRATION: Swiper
     // const testimonialSwiper = document.querySelector(".js-testimonials-swiper");
