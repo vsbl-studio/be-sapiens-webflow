@@ -1,0 +1,5 @@
+@import "../../node_modules/lenis/dist/lenis.css";
+@import "../../node_modules/swiper/swiper.min.css";
+@import "./modules/navbar";
+@import "./modules/accordion";
+@import "./modules/marquee";

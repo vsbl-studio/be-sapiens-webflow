@@ -1,0 +1,115 @@
+body.no-scroll {
+    overflow: hidden !important;
+}
+.nav_fixed .nav-menu-link {
+    color: white !important;
+}
+.nav_fixed .nav-dropdown-arrow svg path {
+    stroke: white !important;
+}
+.nav_fixed .button .text-block {
+    color: white !important;
+}
+
+.nav_fixed .button:hover {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+.nav_scroll {
+    transform: translateY(-150px);
+    transition: 1s ease;
+}
+.nav_scroll.visible {
+    transform: translateY(0);
+}
+.nav_scroll .nav_menu_link {
+    color: #000;
+}
+
+.nav_scroll .button.is-secondary .text-block {
+    color: #000 !important;
+}
+.nav_fixed {
+    transition: 1s ease;
+}
+.nav_fixed.hidden {
+    transform: translateY(-150px);
+}
+
+.menu-icon {
+    width: 2rem;
+    height: 2rem;
+    padding: 0.5rem 0.25rem;
+    position: relative;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.menu-icon span {
+    display: block;
+    position: absolute;
+    height: 0.1563rem;
+    width: 100%;
+    background: black;
+    border-radius: 0;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: 0.25s ease-in-out;
+}
+.menu-icon__checkbox {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    z-index: 2;
+    position: absolute;
+    opacity: 0;
+}
+
+.menu-icon span:nth-child(2) {
+    top: 0.5rem;
+}
+
+.menu-icon span:nth-child(3),
+.menu-icon span:nth-child(4) {
+    top: 1rem;
+}
+
+.menu-icon span:nth-child(5) {
+    top: 1.5rem;
+}
+
+.menu-icon__checkbox:checked ~ span:nth-child(2) {
+    top: 1rem;
+    width: 0%;
+    right: 100%;
+}
+
+.menu-icon__checkbox:checked ~ span:nth-child(3) {
+    transform: rotate(45deg);
+}
+
+.menu-icon__checkbox:checked ~ span:nth-child(4) {
+    transform: rotate(-45deg);
+}
+
+.menu-icon__checkbox:checked ~ span:nth-child(5) {
+    top: 1rem;
+    width: 0%;
+    left: 100%;
+}
+
+.nav-dropdown-toggle.open .nav-dropdown-arrow {
+    transform: rotate(180deg);
+}
