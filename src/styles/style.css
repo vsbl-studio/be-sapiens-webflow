@@ -1,5 +1,17 @@
 @import "../../node_modules/lenis/dist/lenis.css";
-@import "../../node_modules/swiper/swiper.min.css";
+@import "../../node_modules/swiper/swiper-bundle.css";
 @import "./modules/navbar";
 @import "./modules/accordion";
 @import "./modules/marquee";
+
+.section_research .research_list-item.hidden {
+    order: 99999999;
+}
+.section_research .research_list-item:nth-child(3n) {
+    display: none !important;
+}
+@media (min-width: 992px) {
+    .section_research .research_list-item:nth-child(4n) {
+        display: none !important;
+    }
+}

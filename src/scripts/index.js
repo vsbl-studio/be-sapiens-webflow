@@ -17,6 +17,9 @@ import { bodyEl, overlayEl } from "./modules/globalElements";
 import helloModule from "./modules/helloModule";
 import navbar from "./modules/navbar";
 import accordion from "./modules/accordion";
+import swipers from "./modules/swipers";
+import filters from "./modules/filters";
+import video from "./modules/video";
 document.addEventListener("DOMContentLoaded", function () {
     helloModule();
     Swiper.use([Navigation, Pagination, EffectFade, Autoplay, Scrollbar]);
@@ -34,6 +37,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     navbar();
     accordion();
+    swipers();
+    filters();
+    video();
     const revealTitles = document.querySelectorAll(".js-reveal-title");
 
     if (revealTitles) {
