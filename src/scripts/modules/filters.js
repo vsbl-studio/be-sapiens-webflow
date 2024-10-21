@@ -13,6 +13,12 @@ export default function () {
         ".people-slider_filters-list-item"
     );
 
+    const insightsFilterButtons = document.querySelectorAll(
+        ".insights-hero_filter-button"
+    );
+
+    const insightsPosts = document.querySelectorAll(".research-list_list-item");
+
     function moveUnderline(filtersWrapper, button) {
         const underline =
             filtersWrapper.parentNode.parentNode.querySelector(
@@ -81,6 +87,25 @@ export default function () {
         });
     }
 
+    if (insightsFilterButtons.length) {
+        const filtersWrapper = document.querySelector(".insights-hero_filters");
+
+        console.log(insightsFilterButtons);
+        insightsFilterButtons[0].classList.add("active");
+        // Initial position (set to the first active button)
+        const activeButton = insightsFilterButtons[0];
+        if (activeButton) {
+            moveUnderline(filtersWrapper, activeButton);
+        }
+
+        filterPostsByCategory(
+            filtersWrapper,
+            insightsFilterButtons,
+            insightsPosts
+        );
+
+        activeButton.click();
+    }
     if (peopleFilterButtons.length) {
         const filtersWrapper = document.querySelector(
             ".people-slider_filters-list-wrapper"
