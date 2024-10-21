@@ -3,15 +3,32 @@
 @import "./modules/navbar";
 @import "./modules/accordion";
 @import "./modules/marquee";
+@import "./modules/tooltip";
 
+/* Research */
 .section_research .research_list-item.hidden {
     order: 99999999;
 }
-.section_research .research_list-item:nth-child(3n) {
-    display: none !important;
+@media (max-width: 991px) {
+    .section_research .research_list-item:nth-child(3n) {
+        display: none !important;
+    }
 }
 @media (min-width: 992px) {
     .section_research .research_list-item:nth-child(4n) {
         display: none !important;
     }
+}
+
+/* Swipers */
+.people-slider_navigation .swiper-button-disabled {
+    opacity: 0 !important;
+}
+.js-sync-slider_content-swiper .swiper-slide {
+    height: auto;
+}
+
+/* Filters */
+[data-post-category].hidden {
+    display: none !important;
 }
