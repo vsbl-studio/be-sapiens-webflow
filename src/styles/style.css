@@ -4,6 +4,8 @@
 @import "./modules/accordion";
 @import "./modules/marquee";
 @import "./modules/tooltip";
+@import "./modules/pagination";
+@import "./modules/forms";
 
 /* Research */
 .section_research .research_list-item.hidden {
@@ -17,6 +19,12 @@
 @media (min-width: 992px) {
     .section_research .research_list-item:nth-child(4n) {
         display: none !important;
+    }
+}
+/* Research Single Post */
+@media (min-width: 768px) and (max-width: 991px) {
+    #related-articles .research-list_list-item:nth-child(2n) {
+        display: none;
     }
 }
 

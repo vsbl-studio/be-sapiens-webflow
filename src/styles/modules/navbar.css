@@ -1,17 +1,17 @@
 body.no-scroll {
     overflow: hidden !important;
 }
-.nav_fixed .nav-menu-link {
+.nav_fixed:not(.bg-white) .nav-menu-link {
     color: white !important;
 }
-.nav_fixed .nav-dropdown-arrow svg path {
+.nav_fixed:not(.bg-white) .nav-dropdown-arrow svg path {
     stroke: white !important;
 }
-.nav_fixed .button .text-block {
+.nav_fixed:not(.bg-white) .button .text-block {
     color: white !important;
 }
 
-.nav_fixed .button:hover {
+.nav_fixed:not(.bg-white) .button:hover {
     background-color: rgba(0, 0, 0, 0.2) !important;
 }
 

@@ -1,0 +1,16 @@
+.w-pagination-wrapper {
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.w-page-count {
+    width: auto;
+    margin-top: 0;
+}
+.w-pagination-previous {
+    margin-left: 0;
+}
+.w-pagination-next {
+    order: 10;
+    margin-left: auto;
+}

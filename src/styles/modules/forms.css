@@ -1,0 +1,28 @@
+.form_input:focus ~ .floating-label,
+.form_input:not(:placeholder-shown) ~ .floating-label {
+    top: -0.75rem;
+    left: 0;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    font-weight: 700;
+    color: #000;
+}
+
+.w-dropdown-toggle.w--open .form_select-icon {
+    transform: rotate(180deg);
+}
+
+.dropdown-link.w--current {
+    position: relative;
+    background-color: #f7f7f7;
+}
+.dropdown-link.w--current::after {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    content: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M18 7L9.69231 17L6 13" stroke="black" stroke-width="1.5" stroke-linecap="square"/></svg>');
+}
+[fs-selectcustom-element="dropdown"] .dropdown-link:first-child {
+    display: none;
+}

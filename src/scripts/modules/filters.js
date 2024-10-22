@@ -13,12 +13,6 @@ export default function () {
         ".people-slider_filters-list-item"
     );
 
-    const insightsFilterButtons = document.querySelectorAll(
-        ".insights-hero_filter-button"
-    );
-
-    const insightsPosts = document.querySelectorAll(".research-list_list-item");
-
     function moveUnderline(filtersWrapper, button) {
         const underline =
             filtersWrapper.parentNode.parentNode.querySelector(
@@ -87,25 +81,24 @@ export default function () {
         });
     }
 
-    if (insightsFilterButtons.length) {
-        const filtersWrapper = document.querySelector(".insights-hero_filters");
+    const insightsFilterWrapper = document.querySelector(
+        ".insights-hero_filters-items-wrapper"
+    );
 
-        console.log(insightsFilterButtons);
-        insightsFilterButtons[0].classList.add("active");
-        // Initial position (set to the first active button)
-        const activeButton = insightsFilterButtons[0];
-        if (activeButton) {
-            moveUnderline(filtersWrapper, activeButton);
-        }
-
-        filterPostsByCategory(
-            filtersWrapper,
-            insightsFilterButtons,
-            insightsPosts
+    if (insightsFilterWrapper) {
+        const insightsFilterButtons = insightsFilterWrapper.querySelectorAll(
+            ".insights-hero_filter-button"
         );
 
-        activeButton.click();
+        moveUnderline(insightsFilterWrapper, insightsFilterButtons[0]);
+
+        insightsFilterButtons.forEach((btn) => {
+            btn.addEventListener("click", function () {
+                moveUnderline(insightsFilterWrapper, btn);
+            });
+        });
     }
+
     if (peopleFilterButtons.length) {
         const filtersWrapper = document.querySelector(
             ".people-slider_filters-list-wrapper"
