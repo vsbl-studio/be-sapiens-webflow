@@ -10,12 +10,11 @@ import {
     Autoplay,
     Scrollbar,
 } from "swiper/modules";
-// import "swiper/css";
 // Modules
 import { bodyEl, overlayEl } from "./modules/globalElements";
 
-import helloModule from "./modules/helloModule";
 import navbar from "./modules/navbar";
+import cookieYes from "./modules/cookieYes";
 import accordion from "./modules/accordion";
 import swipers from "./modules/swipers";
 import filters from "./modules/filters";
@@ -23,7 +22,6 @@ import video from "./modules/video";
 import mailerlite from "./modules/mailerlite";
 import currentYear from "./modules/currentYear";
 document.addEventListener("DOMContentLoaded", function () {
-    helloModule();
     Swiper.use([Navigation, Pagination, EffectFade, Autoplay, Scrollbar]);
     gsap.registerPlugin(SplitText);
     gsap.registerPlugin(ScrollTrigger);
@@ -39,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Modules
     navbar();
+    cookieYes();
     accordion();
     swipers();
     filters();

@@ -1,6 +1,7 @@
 @import "../../node_modules/lenis/dist/lenis.css";
 @import "../../node_modules/swiper/swiper-bundle.css";
 @import "./modules/navbar";
+@import "./modules/cookieyes";
 @import "./modules/accordion";
 @import "./modules/marquee";
 @import "./modules/tooltip";

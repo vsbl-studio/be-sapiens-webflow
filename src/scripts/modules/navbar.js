@@ -50,7 +50,6 @@ export default function () {
             checkbox.addEventListener("change", function () {
                 const isChecked = this.checked;
 
-                console.log(isChecked);
                 if (isChecked) {
                     setTimeout(() => {
                         burgerMenuScreen.classList.add("open");

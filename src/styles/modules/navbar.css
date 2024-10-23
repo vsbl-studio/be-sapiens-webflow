@@ -114,7 +114,7 @@ body.no-scroll {
     transform: rotate(180deg);
 }
 .mobile-menu-head .button {
-    color: white;
+    color: white !important;
 }
 .mobile-dropdown_head.open .mobile-dropdown-icon {
     transform: rotate(0deg);
