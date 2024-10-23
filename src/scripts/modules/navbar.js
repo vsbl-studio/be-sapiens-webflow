@@ -121,4 +121,24 @@ export default function () {
             isOpen = !isOpen;
         });
     }
+
+    const dropdownMenuLinks = document.querySelectorAll(".nav-dropdown-toggle");
+    dropdownMenuLinks.forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+            if (!e.target.classList.contains("dropdown-menu-link")) {
+                e.preventDefault();
+
+                const dropdownContent = btn.querySelector(".nav-dropdown-menu");
+                if (btn.classList.contains("open")) {
+                    btn.classList.remove("open");
+                    dropdownContent.classList.remove("open");
+                } else {
+                    dropdownMenuLinks.forEach((b) => {
+                        btn.classList.add("open");
+                        dropdownContent.classList.add("open");
+                    });
+                }
+            }
+        });
+    });
 }
