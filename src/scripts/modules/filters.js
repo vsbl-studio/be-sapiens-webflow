@@ -1,17 +1,85 @@
 import { initializePeopleSwiper } from "./swipers";
 export default function () {
+    // Research Posts Component Filter
     const researchFilterButtons = document.querySelectorAll(
         ".research_filter-button"
     );
     const researchPosts = document.querySelectorAll(".research_list-item");
 
+    if (researchFilterButtons.length && researchPosts.length) {
+        const filtersWrapper = document.querySelector(
+            ".research_filters-wrapper"
+        );
+
+        // Initial position (set to the first active button)
+        const activeButton = document.querySelector(
+            ".research_filter-button.active"
+        );
+        if (activeButton) {
+            moveUnderline(filtersWrapper, activeButton);
+        }
+
+        filterPostsByCategory(
+            filtersWrapper,
+            researchFilterButtons,
+            researchPosts
+        );
+    }
+
+    // People Slider Filters
     const peopleFilterButtons = document.querySelectorAll(
         ".people-slider_filter-button"
     );
-
     const peoplePosts = document.querySelectorAll(
-        ".people-slider_filters-list-item"
+        ".js-people-slider_list-item"
     );
+
+    if (peopleFilterButtons.length && peoplePosts.length) {
+        const filtersWrapper = document.querySelector(
+            ".people-slider_filters-list-wrapper"
+        );
+
+        peopleFilterButtons[0].classList.add("active");
+        // Initial position (set to the first active button)
+        const activeButton = peopleFilterButtons[0];
+        if (activeButton) {
+            moveUnderline(filtersWrapper, activeButton);
+        }
+
+        const peopleSwiper = document.querySelector(
+            ".people-slider_list-wrapper"
+        );
+
+        filterPostsByCategory(
+            filtersWrapper,
+            peopleFilterButtons,
+            peoplePosts,
+            peopleSwiper,
+            initializePeopleSwiper
+        );
+
+        activeButton.click();
+    }
+
+    // Insights Filter Active State Management.
+    // Filters are manipulated by Finsweet Attributes.
+    const insightsFilterWrapper = document.querySelector(
+        ".insights-hero_filters-items-wrapper"
+    );
+
+    if (insightsFilterWrapper) {
+        const insightsFilterButtons = insightsFilterWrapper.querySelectorAll(
+            ".insights-hero_filter-button"
+        );
+
+        moveUnderline(insightsFilterWrapper, insightsFilterButtons[0]);
+
+        insightsFilterButtons.forEach((btn) => {
+            btn.addEventListener("click", function () {
+                moveUnderline(insightsFilterWrapper, btn);
+            });
+        });
+    }
 
     function moveUnderline(filtersWrapper, button) {
         const underline =
@@ -79,96 +147,5 @@ export default function () {
                 }
             });
         });
-    }
-
-    const insightsFilterWrapper = document.querySelector(
-        ".insights-hero_filters-items-wrapper"
-    );
-
-    if (insightsFilterWrapper) {
-        const insightsFilterButtons = insightsFilterWrapper.querySelectorAll(
-            ".insights-hero_filter-button"
-        );
-
-        moveUnderline(insightsFilterWrapper, insightsFilterButtons[0]);
-
-        insightsFilterButtons.forEach((btn) => {
-            btn.addEventListener("click", function () {
-                moveUnderline(insightsFilterWrapper, btn);
-            });
-        });
-    }
-
-    if (peopleFilterButtons.length) {
-        const filtersWrapper = document.querySelector(
-            ".people-slider_filters-list-wrapper"
-        );
-
-        peopleFilterButtons[0].classList.add("active");
-        // Initial position (set to the first active button)
-        const activeButton = peopleFilterButtons[0];
-        if (activeButton) {
-            moveUnderline(filtersWrapper, activeButton);
-        }
-
-        const peopleSwiper = document.querySelector(
-            ".people-slider_list-wrapper"
-        );
-
-        filterPostsByCategory(
-            filtersWrapper,
-            peopleFilterButtons,
-            peoplePosts,
-            peopleSwiper,
-            initializePeopleSwiper
-        );
-
-        activeButton.click();
-    }
-    if (researchFilterButtons.length) {
-        const filtersWrapper = document.querySelector(
-            ".research_filters-wrapper"
-        );
-
-        // Initial position (set to the first active button)
-        const activeButton = document.querySelector(
-            ".research_filter-button.active"
-        );
-        if (activeButton) {
-            moveUnderline(filtersWrapper, activeButton);
-        }
-
-        filterPostsByCategory(
-            filtersWrapper,
-            researchFilterButtons,
-            researchPosts
-        );
-    }
-
-    if (peopleFilterButtons.length) {
-        const filtersWrapper = document.querySelector(
-            ".people-slider_filters-list-wrapper"
-        );
-
-        peopleFilterButtons[0].classList.add("active");
-        // Initial position (set to the first active button)
-        const activeButton = peopleFilterButtons[0];
-        if (activeButton) {
-            moveUnderline(filtersWrapper, activeButton);
-        }
-
-        const peopleSwiper = document.querySelector(
-            ".people-slider_list-wrapper"
-        );
-
-        filterPostsByCategory(
-            filtersWrapper,
-            peopleFilterButtons,
-            peoplePosts,
-            peopleSwiper,
-            initializePeopleSwiper
-        );
-
-        activeButton.click();
     }
 }
