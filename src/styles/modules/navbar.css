@@ -113,3 +113,9 @@ body.no-scroll {
 .nav-dropdown-toggle.open .nav-dropdown-arrow {
     transform: rotate(180deg);
 }
+.mobile-menu-head .button {
+    color: white;
+}
+.mobile-dropdown_head.open .mobile-dropdown-icon {
+    transform: rotate(0deg);
+}
