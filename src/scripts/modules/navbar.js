@@ -45,7 +45,7 @@ export default function () {
     // Burger menu
     const burgerMenuScreen = document.querySelector(".mobile-menu");
     const burgerCheckboxes = document.querySelectorAll(".menu-icon__checkbox");
-    if (burgerCheckboxes.length) {
+    if (burgerMenuScreen && burgerCheckboxes.length) {
         burgerCheckboxes.forEach((checkbox) => {
             checkbox.addEventListener("change", function () {
                 const isChecked = this.checked;

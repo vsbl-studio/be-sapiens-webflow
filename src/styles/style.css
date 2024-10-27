@@ -1,5 +1,8 @@
 @import "../../node_modules/lenis/dist/lenis.css";
 @import "../../node_modules/swiper/swiper-bundle.css";
+
+@import "../../node_modules/overlayscrollbars/styles/overlayscrollbars.css";
+
 @import "./modules/navbar";
 @import "./modules/cookieyes";
 @import "./modules/accordion";
@@ -8,6 +11,12 @@
 @import "./modules/pagination";
 @import "./modules/forms";
 
+/* Scrollbar */
+.os-scrollbar {
+    --os-track-bg: #e4e4e4;
+
+    --os-handle-bg: #8dabbe;
+}
 /* Research */
 .section_research .research_list-item.hidden {
     order: 99999999;

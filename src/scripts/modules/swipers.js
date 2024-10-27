@@ -1,14 +1,8 @@
 import Swiper from "swiper";
-import {
-    Navigation,
-    Pagination,
-    EffectFade,
-    Autoplay,
-    Scrollbar,
-} from "swiper/modules";
+import { Navigation, Pagination, EffectFade, Autoplay } from "swiper/modules";
 
 export default function () {
-    Swiper.use([Navigation, Pagination, EffectFade, Autoplay, Scrollbar]);
+    Swiper.use([Navigation, Pagination, EffectFade, Autoplay]);
     const slideSpeed = 1000;
 
     const syncSliderSection = document.querySelector(".js-sync-slider_section");
