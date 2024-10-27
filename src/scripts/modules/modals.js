@@ -8,6 +8,7 @@ export default function () {
         ".side-overlay_head .button"
     );
 
+    console.log(anchorsWithHash);
     function toggleOverlayBackground(isOpen) {
         if (overlayBg) {
             overlayBg.classList.toggle("open", isOpen);
@@ -43,11 +44,13 @@ export default function () {
     if (anchorsWithHash.length) {
         anchorsWithHash.forEach((anchor) => {
             anchor.addEventListener("click", (e) => {
+                console.log("Click");
                 e.preventDefault();
 
                 const targetId = anchor.getAttribute("href").substring(1);
                 const targetElement = document.getElementById(targetId);
 
+                console.log(targetElement);
                 if (
                     targetElement &&
                     targetElement.classList.contains("side-overlay")
