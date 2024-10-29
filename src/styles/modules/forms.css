@@ -26,3 +26,7 @@
 [fs-selectcustom-element="dropdown"] .dropdown-link:first-child {
     display: none;
 }
+
+textarea {
+    resize: none;
+}

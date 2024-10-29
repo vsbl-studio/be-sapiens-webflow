@@ -15,6 +15,7 @@ import video from "./modules/video";
 import mailerlite from "./modules/mailerlite";
 import modals from "./modules/modals";
 import scrollbars from "./modules/scrollbars";
+import animation from "./modules/animation";
 import currentYear from "./modules/currentYear";
 document.addEventListener("DOMContentLoaded", function () {
     gsap.registerPlugin(SplitText);
@@ -29,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     swipers();
     filters();
     video();
+    animation();
     mailerlite();
     modals();
     currentYear();

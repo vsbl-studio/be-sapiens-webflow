@@ -80,7 +80,27 @@ export default function () {
                     },
 
                     slideChange: function () {
-                        const currentSlideIndex = this.realIndex + 1;
+                        const activeIndex = this.activeIndex;
+
+                        const currentSlideIndex =
+                            (activeIndex % this.slides.length) + 1;
+
+                        const activeSlide = this.slides[activeIndex];
+
+                        const sourceButton = activeSlide.querySelector(
+                            ".cases-slider-cta.hidden a"
+                        );
+
+                        const targetButton = document.getElementById(
+                            "js-cases-dynamic-button"
+                        );
+
+                        if (targetButton && sourceButton) {
+                            targetButton.setAttribute(
+                                "href",
+                                sourceButton.getAttribute("href")
+                            );
+                        }
 
                         if (progressCounter) {
                             progressCounter.innerHTML = `${
@@ -90,7 +110,7 @@ export default function () {
                             }  / ${slidesCount}`;
                         }
 
-                        syncSliderImageSwiperInstance.slideTo(this.realIndex);
+                        syncSliderImageSwiperInstance.slideTo(activeIndex);
                     },
                 },
             }

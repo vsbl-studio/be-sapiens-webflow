@@ -1,0 +1,31 @@
+.js-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 2px;
+    display: inline;
+}
+
+.js-hover-text-parent.hovered .js-underline {
+    animation: underline-in 0.5s ease-out forwards;
+}
+.js-hover-text-parent.hovered.leaving-hover .js-underline {
+    background-position: 100% 100%;
+    animation: underline-out 0.5s ease-out forwards;
+}
+@keyframes underline-in {
+    0% {
+        background-size: 0% 1px;
+    }
+    100% {
+        background-size: 100% 1px;
+    }
+}
+@keyframes underline-out {
+    0% {
+        background-size: 100% 1px;
+    }
+    100% {
+        background-size: 0% 1px;
+    }
+}

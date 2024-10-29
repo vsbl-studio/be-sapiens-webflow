@@ -141,4 +141,20 @@ export default function () {
             }
         });
     });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function (event) {
+        const openDropdowns = document.querySelectorAll(
+            ".nav-dropdown-toggle.open"
+        );
+
+        openDropdowns.forEach((dropdown) => {
+            if (!dropdown.contains(event.target)) {
+                const dropdownContent =
+                    dropdown.querySelector(".nav-dropdown-menu");
+                dropdown.classList.remove("open");
+                dropdownContent.classList.remove("open");
+            }
+        });
+    });
 }

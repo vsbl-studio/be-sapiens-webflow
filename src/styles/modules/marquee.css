@@ -1,8 +1,9 @@
 .trusted_logos-marquee {
     animation: marquee 20s linear infinite;
     animation-play-state: running;
+    will-change: transform;
 }
-.trusted_logos-marquee:hover {
+.trusted_logos-marquee-container:hover .trusted_logos-marquee {
     animation-play-state: paused;
 }
 .trusted_logos-tooltip-content {
@@ -41,6 +42,6 @@
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translateX(-100%);
     }
 }

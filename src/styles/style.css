@@ -10,7 +10,7 @@
 @import "./modules/tooltip";
 @import "./modules/pagination";
 @import "./modules/forms";
-
+@import "./modules/animation";
 /* Scrollbar */
 .os-scrollbar {
     --os-track-bg: #e4e4e4;
@@ -20,6 +20,33 @@
 /* Research */
 .section_research .research_list-item.hidden {
     order: 99999999;
+}
+.research_list-item-link:hover .research_list-item-image {
+    transform: scale(1.1);
+}
+
+.subnav-nav ul li a.hovered {
+    animation: underline-in 0.2s ease-out forwards;
+}
+.subnav-nav ul li a.hovered.leaving-hover {
+    background-position: 100% 100%;
+    animation: underline-out 0.2s ease-out forwards;
+}
+@keyframes underline-in {
+    0% {
+        background-size: 0% 1px;
+    }
+    100% {
+        background-size: 100% 1px;
+    }
+}
+@keyframes underline-out {
+    0% {
+        background-size: 100% 1px;
+    }
+    100% {
+        background-size: 0% 1px;
+    }
 }
 @media (max-width: 991px) {
     .section_research .research_list-item:nth-child(3n) {
@@ -42,11 +69,29 @@
 .people-slider_navigation .swiper-button-disabled {
     opacity: 0 !important;
 }
+.js-sync-slider_content-swiper,
+.js-sync-slider_content-swiper .swiper-wrapper {
+    position: static !important;
+}
 .js-sync-slider_content-swiper .swiper-slide {
     height: auto;
 }
 
+.cases-slider_container .swiper-slide-active {
+    z-index: 10;
+    opacity: 1;
+}
 /* Filters */
 [data-post-category].hidden {
     display: none !important;
+}
+
+/* Offerings */
+
+.offerings_card:hover img {
+    transform: scale(1.1);
+}
+
+.offerings_card:hover .button {
+    background-color: #e2ecf4;
 }

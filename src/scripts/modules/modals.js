@@ -8,7 +8,6 @@ export default function () {
         ".side-overlay_head .button"
     );
 
-    console.log(anchorsWithHash);
     function toggleOverlayBackground(isOpen) {
         if (overlayBg) {
             overlayBg.classList.toggle("open", isOpen);
@@ -84,4 +83,20 @@ export default function () {
     }
 
     window.addEventListener("load", handleModalVisibility);
+
+    const discardNewsletterBtn = document.querySelector(".discard-newsletter");
+    const newsletterCTA = document.querySelector(".newsletter_cta");
+    const newsletterModal = document.querySelector(".section_newsletter");
+    if (newsletterModal) {
+        if (discardNewsletterBtn) {
+            discardNewsletterBtn.addEventListener("click", function () {
+                sessionStorage.setItem("discardNewsletter", true);
+                newsletterCTA.style.transform = "translateX(100%)";
+            });
+        }
+
+        if (sessionStorage.getItem("discardNewsletter")) {
+            newsletterModal.style.display = "none";
+        }
+    }
 }
