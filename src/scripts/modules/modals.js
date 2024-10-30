@@ -87,6 +87,9 @@ export default function () {
     const discardNewsletterBtn = document.querySelector(".discard-newsletter");
     const newsletterCTA = document.querySelector(".newsletter_cta");
     const newsletterModal = document.querySelector(".section_newsletter");
+
+    console.log(newsletterModal);
+    console.log(!sessionStorage.getItem("discardNewsletter"));
     if (newsletterModal) {
         if (discardNewsletterBtn) {
             discardNewsletterBtn.addEventListener("click", function () {
@@ -95,8 +98,8 @@ export default function () {
             });
         }
 
-        if (sessionStorage.getItem("discardNewsletter")) {
-            newsletterModal.style.display = "none";
+        if (!sessionStorage.getItem("discardNewsletter")) {
+            newsletterModal.classList.add("available");
         }
     }
 }

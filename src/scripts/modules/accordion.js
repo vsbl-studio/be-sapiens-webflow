@@ -9,10 +9,15 @@ export default function () {
         let observer;
 
         // Initialize: Close all accordion contents
-        items.forEach((item, index) => {
-            const content = item.querySelector(".accordion-content");
-            gsap.set(content, { height: 0, overflow: "hidden" });
-        });
+
+        function closeAllAccordions(items) {
+            items.forEach((item, index) => {
+                const content = item.querySelector(".accordion-content");
+                gsap.set(content, { height: 0, overflow: "hidden" });
+            });
+        }
+
+        closeAllAccordions(items);
 
         items.forEach((item, index) => {
             const header = item.querySelector(".accordion-header");
@@ -43,6 +48,7 @@ export default function () {
             const item = items[index];
             const content = item.querySelector(".accordion-content");
 
+            console.log(index);
             // Animate opening
             gsap.to(content, {
                 height: "auto",
@@ -84,6 +90,10 @@ export default function () {
 
         // Function to start autoplay
         function startAutoplay() {
+            // Reset Index for smooth reseting when component gets in view for the next times
+            closeAllAccordions(items);
+            currentIndex = 0;
+
             // Open the first item
             openItem(currentIndex);
 
@@ -108,7 +118,9 @@ export default function () {
                     if (entry.isIntersecting) {
                         startAutoplay();
                         // Once autoplay starts, you might want to unobserve
-                        observerInstance.unobserve(entry.target);
+                        // observerInstance.unobserve(entry.target);
+                    } else {
+                        stopAutoplay(); // Stop autoplay when the component is out of view
                     }
                 });
             }, options);
@@ -116,6 +128,10 @@ export default function () {
             observer.observe(accordion);
         }
 
-        setupObserver();
+        if (window.innerWidth >= 992) {
+            setupObserver();
+        } else {
+            openItem(0);
+        }
     }
 }

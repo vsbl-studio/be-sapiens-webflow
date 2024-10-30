@@ -30,3 +30,8 @@
 textarea {
     resize: none;
 }
+
+/* Newsletter */
+#wf-form-Newsletter-Form {
+    display: block !important;
+}

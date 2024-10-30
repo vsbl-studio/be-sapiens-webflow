@@ -95,3 +95,13 @@
 .offerings_card:hover .button {
     background-color: #e2ecf4;
 }
+
+/* Newsletter */
+.section_newsletter {
+    opacity: 0;
+    pointer-events: none;
+}
+.section_newsletter.available {
+    opacity: 1;
+    pointer-events: auto;
+}
