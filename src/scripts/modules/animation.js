@@ -1,3 +1,10 @@
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(SplitText);
+gsap.registerPlugin(ScrollTrigger);
+
 export default function () {
     const revealTitles = document.querySelectorAll(".js-reveal-title");
 

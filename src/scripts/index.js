@@ -1,8 +1,3 @@
-// Libs
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
-
 // Modules
 import { setupLenis } from "./modules/lenisSetup";
 
@@ -18,9 +13,6 @@ import scrollbars from "./modules/scrollbars";
 import animation from "./modules/animation";
 import currentYear from "./modules/currentYear";
 document.addEventListener("DOMContentLoaded", function () {
-    gsap.registerPlugin(SplitText);
-    gsap.registerPlugin(ScrollTrigger);
-
     // Modules
     setupLenis();
     animation();
