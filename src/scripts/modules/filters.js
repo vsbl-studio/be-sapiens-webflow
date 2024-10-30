@@ -2,19 +2,19 @@ import { initializePeopleSwiper } from "./swipers";
 export default function () {
     // Research Posts Component Filter
     const researchFilterButtons = document.querySelectorAll(
-        ".research_filter-button"
+        ".research-filters_button"
     );
+
+    console.log(researchFilterButtons);
     const researchPosts = document.querySelectorAll(".research_list-item");
 
     if (researchFilterButtons.length && researchPosts.length) {
         const filtersWrapper = document.querySelector(
-            ".research_filters-wrapper"
+            ".research-filters_outer-list-wrapper"
         );
 
         // Initial position (set to the first active button)
-        const activeButton = document.querySelector(
-            ".research_filter-button.active"
-        );
+        const activeButton = researchFilterButtons[0];
         if (activeButton) {
             moveUnderline(filtersWrapper, activeButton);
         }
@@ -24,6 +24,8 @@ export default function () {
             researchFilterButtons,
             researchPosts
         );
+
+        activeButton.click();
     }
 
     // People Slider Filters
