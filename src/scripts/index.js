@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     swipers();
     filters();
     video();
-    mailerlite();
+    // mailerlite();
     modals();
     currentYear();
 });
