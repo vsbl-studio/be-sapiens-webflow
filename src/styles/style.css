@@ -14,8 +14,11 @@
 /* Scrollbar */
 .os-scrollbar {
     --os-track-bg: #e4e4e4;
-
+    --os-track-bg-hover: #e4e4e4;
+    --os-track-bg-active: #e4e4e4;
     --os-handle-bg: #8dabbe;
+    --os-handle-bg-hover: #8dabbe;
+    --os-handle-bg-active: #8dabbe;
 }
 /* Research */
 .section_research .research_list-item.hidden {
@@ -104,4 +107,28 @@
 .section_newsletter.available {
     opacity: 1;
     pointer-events: auto;
+}
+
+/* How we work */
+.what-we-do_graph-list-item-content .button.with-icon:hover .button.is-icon,
+.what-we-do_graph-list-item-content .button.with-icon.active .button.is-icon,
+.hero_corner-cta:hover .button.is-icon,
+.coaching_list-item .button.with-icon:hover .button.is-icon {
+    background-color: #fff3;
+}
+
+/* Button's Hover */
+.side-overlay_head .button.is-icon img {
+    transition: 0.5s ease;
+}
+.side-overlay_head .button.is-icon:hover img {
+    transform: scale(1.5);
+}
+
+/* Insights */
+.spotlight_grid:hover .spotlight_image {
+    transform: scale(1.1);
+}
+.spotlight_grid:hover .button.is-primary {
+    background-color: #e2ecf2;
 }

@@ -48,7 +48,6 @@ export default function () {
             const item = items[index];
             const content = item.querySelector(".accordion-content");
 
-            console.log(index);
             // Animate opening
             gsap.to(content, {
                 height: "auto",

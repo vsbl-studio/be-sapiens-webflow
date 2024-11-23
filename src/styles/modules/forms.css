@@ -35,3 +35,11 @@ textarea {
 #wf-form-Newsletter-Form {
     display: block !important;
 }
+
+/* Select */
+.form_select + .dropdown-list .dropdown-link {
+    transition: 0.5s ease;
+}
+.form_select + .dropdown-list .dropdown-link:hover {
+    background-color: #f7f7f7;
+}

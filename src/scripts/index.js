@@ -9,6 +9,8 @@ import filters from "./modules/filters";
 import video from "./modules/video";
 import mailerlite from "./modules/mailerlite";
 import modals from "./modules/modals";
+import forms from "./modules/forms";
+import insights from "./modules/insights";
 import scrollbars from "./modules/scrollbars";
 import animation from "./modules/animation";
 import currentYear from "./modules/currentYear";
@@ -20,6 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
     scrollbars();
     cookieYes();
     accordion();
+    forms();
+    insights();
     swipers();
     filters();
     video();

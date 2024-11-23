@@ -5,7 +5,6 @@ export default function () {
         ".research-filters_button"
     );
 
-    console.log(researchFilterButtons);
     const researchPosts = document.querySelectorAll(".research_list-item");
 
     if (researchFilterButtons.length && researchPosts.length) {
@@ -76,8 +75,13 @@ export default function () {
 
         moveUnderline(insightsFilterWrapper, insightsFilterButtons[0]);
 
+        insightsFilterButtons[0].classList.add("active");
         insightsFilterButtons.forEach((btn) => {
             btn.addEventListener("click", function () {
+                insightsFilterButtons.forEach((b) => {
+                    b.classList.remove("active");
+                });
+                btn.classList.add("active");
                 moveUnderline(insightsFilterWrapper, btn);
             });
         });

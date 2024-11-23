@@ -81,9 +81,9 @@ export default function () {
 
                     slideChange: function () {
                         const activeIndex = this.activeIndex;
+                        const realIndex = this.realIndex;
 
-                        const currentSlideIndex =
-                            (activeIndex % this.slides.length) + 1;
+                        let currentSlideIndex = realIndex + 1;
 
                         const activeSlide = this.slides[activeIndex];
 
@@ -108,6 +108,14 @@ export default function () {
                                     ? "0" + currentSlideIndex
                                     : currentSlideIndex
                             }  / ${slidesCount}`;
+                        }
+
+                        // Check if we've reached the last slide
+                        if (currentSlideIndex === slidesCount) {
+                            // Reset to the first slide after a small delay to make it seamless
+                            setTimeout(() => {
+                                this.slideToLoop(0, 0); // `0` for speed if you want instant reset
+                            }, 3000); // Adjust delay as needed
                         }
 
                         syncSliderImageSwiperInstance.slideTo(activeIndex);

@@ -16,8 +16,14 @@ export default function () {
     }
 
     function closeSideOverlays() {
+        document
+            .querySelector(`a[href="${window.location.hash}"]`)
+            ?.classList.remove("active");
+
         sideOverlays.forEach((el) => el.classList.remove("open"));
+
         toggleOverlayBackground(false);
+
         history.replaceState(
             null,
             "",
@@ -43,13 +49,12 @@ export default function () {
     if (anchorsWithHash.length) {
         anchorsWithHash.forEach((anchor) => {
             anchor.addEventListener("click", (e) => {
-                console.log("Click");
                 e.preventDefault();
 
+                anchor.classList.add("active");
                 const targetId = anchor.getAttribute("href").substring(1);
                 const targetElement = document.getElementById(targetId);
 
-                console.log(targetElement);
                 if (
                     targetElement &&
                     targetElement.classList.contains("side-overlay")
@@ -88,8 +93,6 @@ export default function () {
     const newsletterCTA = document.querySelector(".newsletter_cta");
     const newsletterModal = document.querySelector(".section_newsletter");
 
-    console.log(newsletterModal);
-    console.log(!sessionStorage.getItem("discardNewsletter"));
     if (newsletterModal) {
         if (discardNewsletterBtn) {
             discardNewsletterBtn.addEventListener("click", function () {
