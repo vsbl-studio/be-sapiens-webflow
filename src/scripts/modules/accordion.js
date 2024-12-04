@@ -3,6 +3,10 @@ export default function () {
     const accordion = document.querySelector(".accordion");
     if (accordion) {
         const items = accordion.querySelectorAll(".accordion-item");
+        const imageBackgroundWrapper = document.querySelector(
+            ".what-we-do_grid-left"
+        );
+        const imagesForItems = document.querySelectorAll(".what-we-do_image");
         const intervalTime = 10000; // 10 seconds
         let currentIndex = 0;
         let autoPlayInterval;
@@ -54,6 +58,19 @@ export default function () {
                 duration: 0.5,
                 ease: "power2.out",
             });
+
+            if (imageBackgroundWrapper && imagesForItems.length) {
+                imagesForItems.forEach((image) => {
+                    image.style.opacity = "0";
+                });
+
+                if (imagesForItems[index]) {
+                    imagesForItems[index].style.opacity = "1";
+                }
+                // imageBackgroundWrapper.style.backgroundImage = `url(${imagesForItems[
+                //     index
+                // ].getAttribute("src")})`;
+            }
 
             // Optionally, add an active class
             item.classList.add("active");

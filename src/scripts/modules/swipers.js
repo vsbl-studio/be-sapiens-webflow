@@ -40,6 +40,10 @@ export default function () {
             syncSliderImageSwiper,
             {
                 spaceBetween: 30,
+                autoplay: {
+                    delay: 6000,
+                    disableOnInteraction: false,
+                },
                 slidesPerView: 1,
                 loop: true,
                 centeredSlides: true,
@@ -63,7 +67,6 @@ export default function () {
                     el: ".overview-swiper-progress",
                     type: "progressbar",
                 },
-
                 navigation: {
                     prevEl: prevButton,
                     nextEl: nextButton,
@@ -114,11 +117,12 @@ export default function () {
                         if (currentSlideIndex === slidesCount) {
                             // Reset to the first slide after a small delay to make it seamless
                             setTimeout(() => {
+                                syncSliderImageSwiperInstance.slideToLoop(0, 0);
                                 this.slideToLoop(0, 0); // `0` for speed if you want instant reset
                             }, 3000); // Adjust delay as needed
                         }
 
-                        syncSliderImageSwiperInstance.slideTo(activeIndex);
+                        syncSliderImageSwiperInstance.slideToLoop(realIndex);
                     },
                 },
             }
