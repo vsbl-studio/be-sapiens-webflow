@@ -33,7 +33,7 @@ body.no-scroll {
     border-color: #c3c8cd !important;
 }
 .nav_fixed.bg-white .w-nav-link.w--current,
-.nav_fixed.bg-white .w-nav-link.current-menu-item {
+.nav_fixed.bg-white .current-menu-item {
     border-color: #000;
 }
 .nav_fixed.bg-white {
@@ -43,7 +43,7 @@ body.no-scroll {
     border-color: #c3c8cd !important;
 }
 .nav_scroll .w-nav-link.w--current,
-.nav_scroll .w-nav-link.current-menu-item {
+.nav_scroll .current-menu-item {
     border-color: #000;
 }
 .nav_fixed.hidden {

@@ -1,6 +1,5 @@
 // Modules
 import { setupLenis } from "./modules/lenisSetup";
-
 import navbar from "./modules/navbar";
 import cookieYes from "./modules/cookieYes";
 import accordion from "./modules/accordion";
@@ -9,7 +8,7 @@ import filters from "./modules/filters";
 import video from "./modules/video";
 import mailerlite from "./modules/mailerlite";
 import modals from "./modules/modals";
-import forms from "./modules/forms";
+import forms, { customFormValidation } from "./modules/forms";
 import insights from "./modules/insights";
 import scrollbars from "./modules/scrollbars";
 import animation from "./modules/animation";
@@ -29,5 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
     video();
     // mailerlite();
     modals();
+    customFormValidation();
     currentYear();
 });

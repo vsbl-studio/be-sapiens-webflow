@@ -94,11 +94,17 @@
 .offerings_card:hover img {
     transform: scale(1.1);
 }
-
 .offerings_card:hover .button {
     background-color: #e2ecf4;
 }
-
+#what-we-offer .js-reveal-title div div {
+    padding-bottom: 0.2rem;
+}
+@media (min-width: 1440px) {
+    #what-we-offer .js-reveal-title div div {
+        padding-bottom: 0.4rem;
+    }
+}
 /* Newsletter */
 .section_newsletter {
     opacity: 0;

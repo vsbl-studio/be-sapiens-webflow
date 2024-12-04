@@ -1,7 +1,7 @@
 .tooltip-content {
     opacity: 0;
     transition: 0.5s ease;
-    transform: translateY(-110%);
+    transform: translate(-50%, -110%);
 }
 
 .tooltip-content::before {
@@ -27,5 +27,5 @@
 }
 .tooltip-wrapper:hover .tooltip-content {
     opacity: 1;
-    transform: translateY(-100%);
+    transform: translate(-50%, -100%);
 }
