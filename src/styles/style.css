@@ -12,7 +12,8 @@
 @import "./modules/forms";
 @import "./modules/animation";
 
-html {
+html,
+body {
     overflow: hidden !important;
 }
 /* Scrollbar */
