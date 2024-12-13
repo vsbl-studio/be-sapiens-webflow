@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setupLenis();
     animation();
     navbar();
-    // scrollbars();
+    scrollbars();
     cookieYes();
     accordion();
     forms();
