@@ -75,62 +75,43 @@ export const customFormValidation = function () {
             messages: {
                 name: "This field is required.",
                 "E-mail": "Please provide a valid email.",
+                "Newsletter-Email": "Please provide a valid email.",
                 Phone: "Please provide a valid phone number.",
                 Message: "Please enter your message.",
                 "Privacy-Policy":
-                    "You must agree with Privacy Policy to proceed.",
+                    "You must agree with the Privacy Policy to proceed.",
+                "Privacy-Policy-Newsletter":
+                    "You must agree with the Privacy Policy to proceed.",
             },
             errorPlacement: function (error, element) {
-                const $errorWrapper = element
-                    .closest(".form_field-wrapper")
-                    .find(".form_input-error");
-
-                const $newsletterErrorWrapper = element
-                    .closest(".form_newsletter-input-wrapper")
-                    .find(".form_newsletter-input-error");
-
-                if ($errorWrapper.length) {
-                    $errorWrapper.show();
-                } else if (element.attr("name") === "Newsletter-Email") {
+                // Handle input errors
+                if (element.attr("name") === "Newsletter-Email") {
+                    const $newsletterErrorWrapper = element
+                        .closest(".form_newsletter-input-wrapper")
+                        .find(".form_newsletter-input-error");
                     $newsletterErrorWrapper.show();
-                } else if (element.attr("name") === "Privacy-Policy") {
-                    const $privacyErrorWrapper = element
-                        .closest(".form_pp-checkbox-wrapper")
-                        .find(".form_privacy-error");
-                    $privacyErrorWrapper.show();
                 } else if (
                     element.attr("name") === "Privacy-Policy-Newsletter"
                 ) {
                     const $privacyErrorWrapper = element
-                        .closest(".form_pp-checkbox-wrapper")
-                        .find(".form_newsletter-privacy-error");
+                        .closest(".form_pp-wrapper")
+                        .next(".form_newsletter-privacy-error");
                     $privacyErrorWrapper.show();
                 } else {
-                    error.insertAfter(element);
+                    error.insertAfter(element); // Default placement
                 }
             },
             success: function (label, element) {
-                const $errorWrapper = $(element)
-                    .closest(".form_field-wrapper")
-                    .find(".form_input-error");
-
-                const $newsletterErrorWrapper = $(element)
-                    .closest(".form_newsletter-input-wrapper")
-                    .find(".form_newsletter-input-error");
-
-                if ($errorWrapper.length) {
-                    $errorWrapper.hide();
-                } else if (element.name === "Newsletter-Email") {
+                // Hide input errors on success
+                if (element.name === "Newsletter-Email") {
+                    const $newsletterErrorWrapper = $(element)
+                        .closest(".form_newsletter-input-wrapper")
+                        .find(".form_newsletter-input-error");
                     $newsletterErrorWrapper.hide();
-                } else if (element.name === "Privacy-Policy") {
-                    const $privacyErrorWrapper = $(element)
-                        .closest(".form_pp-checkbox-wrapper")
-                        .find(".form_privacy-error");
-                    $privacyErrorWrapper.hide();
                 } else if (element.name === "Privacy-Policy-Newsletter") {
                     const $privacyErrorWrapper = $(element)
-                        .closest(".form_pp-checkbox-wrapper")
-                        .find(".form_newsletter-privacy-error");
+                        .closest(".form_pp-wrapper")
+                        .next(".form_newsletter-privacy-error");
                     $privacyErrorWrapper.hide();
                 }
             },
