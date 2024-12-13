@@ -11,11 +11,6 @@
 @import "./modules/pagination";
 @import "./modules/forms";
 @import "./modules/animation";
-
-html,
-body {
-    overflow: hidden !important;
-}
 /* Scrollbar */
 .os-scrollbar {
     --os-track-bg: #e4e4e4;
