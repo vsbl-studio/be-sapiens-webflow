@@ -10,20 +10,20 @@ export default function () {
 
     if (revealTitles) {
         revealTitles.forEach((title) => {
-            const splitText = new SplitText(title, { type: "words" });
+            const splitText = new SplitText(title, { type: "lines" });
 
-            splitText.words.forEach((word) => {
+            splitText.lines.forEach((word) => {
                 const wordWrapper = document.createElement("div");
                 wordWrapper.style.overflow = "hidden";
                 wordWrapper.style.display = "inline-block";
                 word.parentNode.insertBefore(wordWrapper, word);
                 wordWrapper.appendChild(word);
             });
-            gsap.from(splitText.words, {
+            gsap.from(splitText.lines, {
                 y: 100,
-                opacity: 1,
-                duration: 1,
-                stagger: 0.3,
+                opacity: 0,
+                duration: 0.5,
+                stagger: 0.2,
                 ease: "power2.out",
                 delay: 0.5,
 
@@ -51,10 +51,10 @@ export default function () {
             gsap.from(splitText.lines, {
                 y: 100,
                 opacity: 0,
-                duration: 1,
-                stagger: 0.3,
+                duration: 0.5,
+                stagger: 0.2,
                 ease: "power2.out",
-                delay: 1.5,
+                delay: 1,
                 scrollTrigger: {
                     trigger: text,
                     start: "top 90%",
@@ -72,10 +72,10 @@ export default function () {
         gsap.to(btn, {
             y: 0,
             opacity: 1,
-            duration: 1,
-            stagger: 0.3,
+            duration: 0.5,
+            stagger: 0.2,
             ease: "power2.out",
-            delay: 2.5,
+            delay: 1.5,
             scrollTrigger: {
                 trigger: btn,
                 start: "top 100%",

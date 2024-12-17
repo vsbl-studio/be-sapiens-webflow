@@ -107,7 +107,7 @@ export default function () {
                 gsap.to(dropdownBody, {
                     height: "auto",
                     marginBottom: "1rem",
-                    duration: 1,
+                    duration: 0.5,
                     ease: "power2.out",
                     onStart: function () {
                         gsap.set(dropdownBody, {

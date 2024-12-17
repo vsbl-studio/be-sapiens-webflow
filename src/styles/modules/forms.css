@@ -1,11 +1,13 @@
 .form_input:focus ~ .floating-label,
-.form_input:not(:placeholder-shown) ~ .floating-label {
+.form_input:not(:placeholder-shown) ~ .floating-label,
+.form_input:focus ~ .floating-textarea-label,
+.form_input:not(:placeholder-shown) ~ .floating-textarea-label {
     top: -0.75rem;
     left: 0;
     font-size: 0.75rem;
     line-height: 1.125rem;
-    font-weight: 700;
     color: #000;
+    font-family: "Twklausannepan 500", sans-serif;
 }
 
 .w-dropdown-toggle.w--open .form_select-icon {

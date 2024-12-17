@@ -166,3 +166,12 @@ body.no-scroll {
 .impact_card:hover .button.is-secondary.is-variant.is-icon {
     background-color: #c3c8cd;
 }
+
+@media (max-width: 991px) {
+    .what-we-do_accordion
+        .accordion-item.active
+        .what-we-do_accordion-head-text {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+}
