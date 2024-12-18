@@ -67,9 +67,6 @@ export default function () {
                 if (imagesForItems[index]) {
                     imagesForItems[index].style.opacity = "1";
                 }
-                // imageBackgroundWrapper.style.backgroundImage = `url(${imagesForItems[
-                //     index
-                // ].getAttribute("src")})`;
             }
 
             // Optionally, add an active class
@@ -144,10 +141,10 @@ export default function () {
             observer.observe(accordion);
         }
 
-        if (window.innerWidth >= 992) {
-            setupObserver();
-        } else {
-            openItem(0);
-        }
+        // if (window.innerWidth >= 992) {
+        setupObserver();
+        // } else {
+        //     openItem(0);
+        // }
     }
 }
