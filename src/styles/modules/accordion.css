@@ -16,3 +16,9 @@
     height: 1px;
     transition: all 10s linear;
 }
+
+@media (max-width: 992px) {
+    .accordion-item.active .accordion-header::before {
+        transition: all 2s linear;
+    }
+}
