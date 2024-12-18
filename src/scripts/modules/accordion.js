@@ -141,10 +141,10 @@ export default function () {
             observer.observe(accordion);
         }
 
-        // if (window.innerWidth >= 992) {
-        setupObserver();
-        // } else {
-        //     openItem(0);
-        // }
+        if (window.innerWidth >= 992) {
+            setupObserver();
+        } else {
+            openItem(0);
+        }
     }
 }
