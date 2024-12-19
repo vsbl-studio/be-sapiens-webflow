@@ -123,24 +123,58 @@ export default function () {
     }
 
     const dropdownMenuLinks = document.querySelectorAll(".nav-dropdown-toggle");
+
     dropdownMenuLinks.forEach((btn) => {
+        btn.addEventListener("mouseenter", function () {
+            openDropdown(btn);
+        });
+
+        btn.addEventListener("mouseleave", function () {
+            closeDropdown(btn);
+        });
+
         btn.addEventListener("click", function (e) {
             if (!e.target.classList.contains("dropdown-menu-link")) {
                 e.preventDefault();
-
-                const dropdownContent = btn.querySelector(".nav-dropdown-menu");
-                if (btn.classList.contains("open")) {
-                    btn.classList.remove("open");
-                    dropdownContent.classList.remove("open");
-                } else {
-                    dropdownMenuLinks.forEach((b) => {
-                        btn.classList.add("open");
-                        dropdownContent.classList.add("open");
-                    });
-                }
+                toggleDropdown(btn);
             }
         });
     });
+
+    // Toggle dropdown open/close
+    function toggleDropdown(btn) {
+        const dropdownContent = btn.querySelector(".nav-dropdown-menu");
+        if (btn.classList.contains("open")) {
+            closeDropdown(btn);
+        } else {
+            openDropdown(btn);
+        }
+    }
+
+    // Open dropdown
+    function openDropdown(btn) {
+        closeAllDropdowns(); // Close other open dropdowns
+        const dropdownContent = btn.querySelector(".nav-dropdown-menu");
+        btn.classList.add("open");
+        dropdownContent.classList.add("open");
+    }
+
+    // Close dropdown
+    function closeDropdown(btn) {
+        const dropdownContent = btn.querySelector(".nav-dropdown-menu");
+        btn.classList.remove("open");
+        dropdownContent.classList.remove("open");
+    }
+
+    // Close all dropdowns
+    function closeAllDropdowns() {
+        dropdownMenuLinks.forEach((dropdown) => {
+            const dropdownContent =
+                dropdown.querySelector(".nav-dropdown-menu");
+            dropdown.classList.remove("open");
+            dropdownContent.classList.remove("open");
+        });
+    }
 
     // Close dropdown when clicking outside
     document.addEventListener("click", function (event) {
@@ -150,10 +184,7 @@ export default function () {
 
         openDropdowns.forEach((dropdown) => {
             if (!dropdown.contains(event.target)) {
-                const dropdownContent =
-                    dropdown.querySelector(".nav-dropdown-menu");
-                dropdown.classList.remove("open");
-                dropdownContent.classList.remove("open");
+                closeDropdown(dropdown);
             }
         });
     });
