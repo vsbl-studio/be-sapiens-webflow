@@ -8,125 +8,152 @@ export default function () {
     const syncSliderSection = document.querySelector(".js-sync-slider_section");
 
     if (syncSliderSection) {
-        const syncSliderImageSwiper = syncSliderSection.querySelector(
-            ".js-sync-slider_image-swiper"
-        );
-        const syncSliderContentSwiper = syncSliderSection.querySelector(
-            ".js-sync-slider_content-swiper"
-        );
+        function initializeSyncSlider(initSlider) {
+            const syncSliderImageSwiper = syncSliderSection.querySelector(
+                ".js-sync-slider_image-swiper"
+            );
+            const syncSliderContentSwiper = syncSliderSection.querySelector(
+                ".js-sync-slider_content-swiper"
+            );
+            const progressLine = syncSliderSection.querySelector(
+                ".js-sync-slider_progress"
+            );
+            const progressCounter = syncSliderSection.querySelector(
+                ".js-sync-slider_counter"
+            );
+            const prevButton = syncSliderSection.querySelector(
+                ".js-sync-slider_prev"
+            );
+            const nextButton = syncSliderSection.querySelector(
+                ".js-sync-slider_next"
+            );
 
-        const progressLine = syncSliderSection.querySelector(
-            ".js-sync-slider_progress"
-        );
-        const progressCounter = syncSliderSection.querySelector(
-            ".js-sync-slider_counter"
-        );
+            let slidesCount =
+                syncSliderContentSwiper.querySelectorAll(
+                    ".swiper-slide"
+                ).length;
 
-        const prevButton = syncSliderSection.querySelector(
-            ".js-sync-slider_prev"
-        );
-        const nextButton = syncSliderSection.querySelector(
-            ".js-sync-slider_next"
-        );
+            if (slidesCount < 10) {
+                slidesCount = `0${slidesCount}`;
+            }
 
-        let slidesCount =
-            syncSliderContentSwiper.querySelectorAll(".swiper-slide").length;
+            if (progressCounter) {
+                progressCounter.innerHTML = `01 / ${slidesCount}`;
+            }
 
-        if (slidesCount < 10) {
-            slidesCount = `0${slidesCount}`;
+            if (initSlider) {
+                const syncSliderImageSwiperInstance = new Swiper(
+                    syncSliderImageSwiper,
+                    {
+                        spaceBetween: 30,
+                        autoplay: {
+                            delay: 6000,
+                            disableOnInteraction: false,
+                        },
+                        slidesPerView: 1,
+                        loop: true,
+                        centeredSlides: true,
+                        effect: "fade",
+                        speed: slideSpeed,
+                    }
+                );
+
+                const syncSliderContentSwiperInstance = new Swiper(
+                    syncSliderContentSwiper,
+                    {
+                        spaceBetween: 30,
+                        autoplay: {
+                            delay: 6000,
+                            disableOnInteraction: false,
+                        },
+                        slidesPerView: 1,
+                        loop: true,
+                        centeredSlides: false,
+                        pagination: {
+                            el: ".overview-swiper-progress",
+                            type: "progressbar",
+                        },
+                        navigation: {
+                            prevEl: prevButton,
+                            nextEl: nextButton,
+                        },
+                        speed: slideSpeed,
+                        on: {
+                            autoplayTimeLeft(s, time, progress) {
+                                if (progressLine) {
+                                    progressLine.style.setProperty(
+                                        "width",
+                                        `${100 - 100 * progress}%`
+                                    );
+                                }
+                            },
+                            slideChange: function () {
+                                const activeIndex = this.activeIndex;
+                                const realIndex = this.realIndex;
+
+                                let currentSlideIndex = realIndex + 1;
+
+                                const activeSlide = this.slides[activeIndex];
+
+                                const sourceButton = activeSlide.querySelector(
+                                    ".cases-slider-cta.hidden a"
+                                );
+
+                                const targetButton = document.getElementById(
+                                    "js-cases-dynamic-button"
+                                );
+
+                                if (targetButton && sourceButton) {
+                                    targetButton.setAttribute(
+                                        "href",
+                                        sourceButton.getAttribute("href")
+                                    );
+                                }
+
+                                if (progressCounter) {
+                                    progressCounter.innerHTML = `${
+                                        currentSlideIndex < 10
+                                            ? "0" + currentSlideIndex
+                                            : currentSlideIndex
+                                    }  / ${slidesCount}`;
+                                }
+
+                                if (currentSlideIndex === slidesCount) {
+                                    setTimeout(() => {
+                                        syncSliderImageSwiperInstance.slideToLoop(
+                                            0,
+                                            0
+                                        );
+                                        this.slideToLoop(0, 0);
+                                    }, 3000);
+                                }
+
+                                syncSliderImageSwiperInstance.slideToLoop(
+                                    realIndex
+                                );
+                            },
+                        },
+                    }
+                );
+            }
         }
 
-        const syncSliderImageSwiperInstance = new Swiper(
-            syncSliderImageSwiper,
-            {
-                spaceBetween: 30,
-                autoplay: {
-                    delay: 6000,
-                    disableOnInteraction: false,
-                },
-                slidesPerView: 1,
-                loop: true,
-                centeredSlides: true,
-                effect: "fade",
-                speed: slideSpeed,
-            }
-        );
+        initializeSyncSlider(false);
+        const observerOptions = {
+            root: null, // Observes within the viewport
+            threshold: 0.5, // Trigger when 50% of the section is visible
+        };
 
-        const syncSliderContentSwiperInstance = new Swiper(
-            syncSliderContentSwiper,
-            {
-                spaceBetween: 30,
-                autoplay: {
-                    delay: 6000,
-                    disableOnInteraction: false,
-                },
-                slidesPerView: 1,
-                loop: true,
-                centeredSlides: false,
-                pagination: {
-                    el: ".overview-swiper-progress",
-                    type: "progressbar",
-                },
-                navigation: {
-                    prevEl: prevButton,
-                    nextEl: nextButton,
-                },
-                speed: slideSpeed,
-                on: {
-                    autoplayTimeLeft(s, time, progress) {
-                        if (progressLine) {
-                            progressLine.style.setProperty(
-                                "width",
-                                `${100 - 100 * progress}%`
-                            );
-                        }
-                    },
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    initializeSyncSlider(true);
+                    observer.unobserve(entry.target); // Stop observing once triggered
+                }
+            });
+        }, observerOptions);
 
-                    slideChange: function () {
-                        const activeIndex = this.activeIndex;
-                        const realIndex = this.realIndex;
-
-                        let currentSlideIndex = realIndex + 1;
-
-                        const activeSlide = this.slides[activeIndex];
-
-                        const sourceButton = activeSlide.querySelector(
-                            ".cases-slider-cta.hidden a"
-                        );
-
-                        const targetButton = document.getElementById(
-                            "js-cases-dynamic-button"
-                        );
-
-                        if (targetButton && sourceButton) {
-                            targetButton.setAttribute(
-                                "href",
-                                sourceButton.getAttribute("href")
-                            );
-                        }
-
-                        if (progressCounter) {
-                            progressCounter.innerHTML = `${
-                                currentSlideIndex < 10
-                                    ? "0" + currentSlideIndex
-                                    : currentSlideIndex
-                            }  / ${slidesCount}`;
-                        }
-
-                        // Check if we've reached the last slide
-                        if (currentSlideIndex === slidesCount) {
-                            // Reset to the first slide after a small delay to make it seamless
-                            setTimeout(() => {
-                                syncSliderImageSwiperInstance.slideToLoop(0, 0);
-                                this.slideToLoop(0, 0); // `0` for speed if you want instant reset
-                            }, 3000); // Adjust delay as needed
-                        }
-
-                        syncSliderImageSwiperInstance.slideToLoop(realIndex);
-                    },
-                },
-            }
-        );
+        observer.observe(syncSliderSection);
     }
 }
 let peopleSwiperInstance = null;
