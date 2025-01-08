@@ -23,43 +23,6 @@ export const customFormValidation = function () {
     // Find all forms
     const $forms = $("form");
 
-    // Submission function
-    async function submitToBeehiiv(email) {
-        try {
-            const response = await client.subscriptions.create(
-                "pub_93d89ae0-4b60-47ca-b79f-d488c58ac9bd",
-                {
-                    email: email,
-                    referringSite: "Sapiens", // Replace with dynamic data if needed
-                }
-            );
-            console.log("Subscriber added successfully:", response);
-        } catch (error) {
-            console.error("Error adding subscriber:", error);
-        }
-    }
-
-    // Use MutationObserver to detect form success
-    const formObserver = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (
-                mutation.type === "childList" &&
-                $(mutation.target).hasClass("w-form-done")
-            ) {
-                const $emailField = $(".your-email-field-class"); // Replace with the actual class or ID of your email input
-                validateAndSubmit($emailField);
-            }
-        });
-    });
-
-    // Observe the success message container
-    const successContainer = document.querySelector(".w-form-done");
-    if (successContainer) {
-        formObserver.observe(successContainer, {
-            childList: true,
-        });
-    }
-
     // Add custom methods
     $.validator.addMethod("letters", function (value, element) {
         return (
@@ -176,10 +139,6 @@ export const customFormValidation = function () {
                         .closest(".form_newsletter-input-wrapper")
                         .find(".form_newsletter-input-error");
                     $newsletterErrorWrapper.hide();
-
-                    $(".form_newsletter").on("submit", async function (e) {
-                        submitToBeehiiv($(element).val());
-                    });
                 } else if (element.name === "Privacy-Policy-Newsletter") {
                     const $privacyErrorWrapper = $(element)
                         .closest(".form_pp-wrapper")
