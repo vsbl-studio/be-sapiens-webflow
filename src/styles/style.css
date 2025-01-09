@@ -2,7 +2,7 @@
 @import "../../node_modules/swiper/swiper-bundle.css";
 
 @import "../../node_modules/overlayscrollbars/styles/overlayscrollbars.css";
-
+@import "./modules/fluid-fonts";
 @import "./modules/navbar";
 @import "./modules/cookieyes";
 @import "./modules/accordion";
@@ -139,4 +139,56 @@
 }
 .spotlight_grid:hover .button.is-primary {
     background-color: #e2ecf2;
+}
+
+strong {
+    font-family: "Twklausannepan 500", sans-serif;
+    font-weight: 200;
+}
+.people_collection-list,
+.impact_cards-wrapper,
+.research_list,
+.people-slider_filters-list {
+    -ms-overflow-style: none !important; /* Internet Explorer 10+ */
+    scrollbar-width: none !important; /* Firefox */
+}
+.people-slider_filters-list::-webkit-scrollbar,
+.research_list::-webkit-scrollbar,
+.people_collection-list::-webkit-scrollbar,
+.impact_cards-wrapper::-webkit-scrollbar {
+    display: none !important; /* Safari and Chrome */
+}
+
+.side-overlay_content h1 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+@media (min-width: 992px) {
+    .side-overlay_content h1 {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+}
+@media (min-width: 1440px) {
+    .side-overlay_content h1 {
+        font-size: 2.222.vw;
+        line-height: 2.778vw;
+    }
+}
+ul + p {
+    margin-top: 0;
+}
+ul li ul {
+    margin-bottom: 0;
+}
+
+.grecaptcha-badge {
+    display: none !important;
+}
+
+.w-checkbox:after {
+    display: none !important;
+}
+.js-mobile-menu-cta .button {
+    border-color: var(--extended-green--green-100);
 }

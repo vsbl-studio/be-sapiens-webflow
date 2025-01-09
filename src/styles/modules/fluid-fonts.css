@@ -1,0 +1,20 @@
+html {
+    font-size: 1.2rem !important;
+}
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: calc(0.4rem + 0.6666666666666666vw) !important;
+    }
+}
+@media screen and (max-width: 1440px) {
+    html {
+        font-size: calc(0.3303571428571429rem + 0.744047619047619vw) !important;
+    }
+}
+@media screen and (max-width: 768px) {
+    html {
+        font-size: calc(
+            0.9997392438070404rem + 0.41720990873533237vw
+        ) !important;
+    }
+}
