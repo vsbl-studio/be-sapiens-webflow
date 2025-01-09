@@ -12,8 +12,14 @@ export default function () {
         let autoPlayInterval;
         let observer;
 
-        // Initialize: Close all accordion contents
+        if (imageBackgroundWrapper && imagesForItems.length) {
+            imagesForItems.forEach((image) => {
+                image.style.opacity = "0";
+            });
+            imagesForItems[0].style.opacity = "1";
+        }
 
+        // Initialize: Close all accordion contents
         function closeAllAccordions(items) {
             items.forEach((item, index) => {
                 const content = item.querySelector(".accordion-content");
