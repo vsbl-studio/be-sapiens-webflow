@@ -49,9 +49,6 @@ export default function () {
     if (anchorsWithHash.length) {
         anchorsWithHash.forEach((anchor) => {
             anchor.addEventListener("click", (e) => {
-                e.preventDefault();
-
-                anchor.classList.add("active");
                 const targetId = anchor.getAttribute("href").substring(1);
                 const targetElement = document.getElementById(targetId);
 
@@ -59,6 +56,10 @@ export default function () {
                     targetElement &&
                     targetElement.classList.contains("side-overlay")
                 ) {
+                    e.preventDefault();
+
+                    anchor.classList.add("active");
+
                     closeSideOverlays();
                     targetElement.classList.add("open");
                     toggleOverlayBackground(true);
