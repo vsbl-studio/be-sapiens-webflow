@@ -1,8 +1,4 @@
 import jqueryValidate from "jquery-validation";
-const client = new BeehiivClient({
-    token: "wd4FnQVcPGShzvIhjccLSXCG6qMwPrHcaB4bhIijBray4AqJhIVfzBP60mLcIHpe",
-});
-import { BeehiivClient } from "@beehiiv/sdk";
 
 export default function () {
     setTimeout(() => {
